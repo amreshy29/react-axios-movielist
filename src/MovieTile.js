@@ -1,8 +1,8 @@
 import React from "react";
 
 export default function MovieTile(props) {
-  const movie_title = props.movieTile.map(movie => {
-    return <MovieRow movie_row={movie} />;
+  const movie_title = props.movieTile.map((movie, i) => {
+    return <MovieRow key={i} movie_row={movie} />;
   });
   const renderHead = () => {
     return (

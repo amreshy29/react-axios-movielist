@@ -15,6 +15,20 @@ class MovieList extends React.Component {
       movieList: []
     };
   }
+  loadData = async () => {
+    const datas = await axios.get("/movies");
+    // console.log(data.data.movies);
+    /* datas.then(data => {
+      console.log("movies", datas.data.movies);
+      this.setState({
+        movieList: data.data.movies
+      });
+      //  console.log(this.state.movieList);
+    });ß*/
+    this.setState({
+      movieList: datas.data.movies
+    });
+  };
   componentDidMount() {
     /* axios.get("/movies").then(
       function(response) {
@@ -23,12 +37,7 @@ class MovieList extends React.Component {
         });
       }.bind(this)
     ); */
-    axios.get("/movies").then(response => {
-      this.setState({
-        movieList: response.data.movies
-      });
-      //  console.log(this.state.movieList);
-    });
+    this.loadData();
   }
   render() {
     return (
